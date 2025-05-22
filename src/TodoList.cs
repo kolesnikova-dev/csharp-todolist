@@ -13,7 +13,7 @@ public class TodoList()
         string determination = Console.ReadLine() ?? "";
         if (int.TryParse(determination, out int taskNumber))
         {
-            tasks[taskNumber] += " - ".Pastel(ConsoleColor.DarkGreen) + "completed".Pastel(ConsoleColor.White);
+            tasks[taskNumber-1] += " - ".Pastel(ConsoleColor.DarkGreen) + "completed".Pastel(ConsoleColor.White);
         }
         else
         {
@@ -34,7 +34,7 @@ public class TodoList()
         Console.WriteLine("======================".Pastel(ConsoleColor.Blue));
         for (int i = 0; i < tasks.Length; i++)
         {
-            Console.WriteLine(i + " " + tasks[i].Pastel(ConsoleColor.Blue));
+            Console.WriteLine(i+1 + " " + tasks[i].Pastel(ConsoleColor.Blue));
         }
     }
 }
