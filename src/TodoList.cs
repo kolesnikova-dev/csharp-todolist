@@ -10,10 +10,10 @@ public class TodoList()
         Console.WriteLine("Current tasks:");
         View();
         Console.WriteLine("Enter number of the task that you would like to complete");
-        string determination = Console.ReadLine() ?? "";
-        if (int.TryParse(determination, out int taskNumber) && ValidateTaskNumber(taskNumber))
+        int taskNumber = int.Parse(Console.ReadLine() ?? "") - 1;
+        if (ValidateTaskNumber(taskNumber))
         {
-            tasks[taskNumber - 1] += " - ".Pastel(ConsoleColor.DarkGreen) + "completed".Pastel(ConsoleColor.White);
+            tasks[taskNumber] += " - ".Pastel(ConsoleColor.DarkGreen) + "completed".Pastel(ConsoleColor.White);
         }
         else
         {
@@ -32,7 +32,7 @@ public class TodoList()
     public static void View()
     {
         Console.WriteLine("======================".Pastel(ConsoleColor.Blue));
-        for (int i = 0; i < tasks.Length; i++)
+        for (int i = 0; i < taskCounter; i++)
         {
             Console.WriteLine(i + 1 + " " + tasks[i].Pastel(ConsoleColor.Blue));
         }
@@ -40,6 +40,6 @@ public class TodoList()
 
     public static bool ValidateTaskNumber(int taskNumber)
     {
-       return taskNumber - 1 >= 0 && taskNumber - 1 < tasks.Length;
+       return taskNumber >= 0 && taskNumber - 1 < taskCounter;
     }
 }
